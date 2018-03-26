@@ -1,0 +1,39 @@
+#1
+1. 16*16*4 = 1024
+
+2. 128 misses
+
+3. 128/1024 = 12.5%
+
+
+Fundamental Parameters:
+
+C = cache size in bytes
+B = block size in bytes
+m = address size in bits
+E = lines per set, given by the "type" of cache (i.e. direct-mapped, X-way associative, fully-associative)
+
+Derived Parameters:
+
+1.) First we need to determine how many sets (denoted S) there will be. This comes from the following equation:
+C=S⋅E⋅B
+
+Example: 64 byte direct mapped cache with 4 byte blocks would have 16 sets
+
+2.) Now we can figure out how many set bits (denoted s) we will need. This is given by the equation:
+
+s=log2S
+
+Example: Given 16 sets, we need 4 bits to address the sets
+
+3.) Next we'll calculate the number of bits for the block offset, denoted $b:
+
+b=log2B
+
+Example: With 4 byte blocks, we need 2 bits in order to address any byte.
+
+4.) Finally, we can calculate the tag bits (denoted t):
+
+m=t+s+b
+
+Example: With 32 bit addresses, the above example would have 26 bits for the tag.

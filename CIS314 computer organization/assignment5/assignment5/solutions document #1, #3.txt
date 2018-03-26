@@ -1,0 +1,83 @@
+##1
+
+
+.pos 0
+Init:
+irmovl Stack, %ebp      ## push stack into %ebp
+irmovl Stack, %esp      ## push stack into %esp
+call Main               ## call main
+halt
+
+f:
+pushl %ebp              ## push %ebp into stack
+rrmovl %esp, %ebp       ## move %esp into %ebp
+mrmovl 8(%ebp), %eax    ## moves argument into %eax
+mrmovl 8(%ebp), %ebx    ## moves same argument into %ebx
+addl %eax, %eax         ## %eax = %eax + %eax
+addl %ebx, %eax         ## %eax = %eax + %ebx
+popl %ebp               ## remove %ebp out of stack
+ret                     ## Return %eax
+
+g:
+pushl %ebp              ## push %ebp into stack
+rrmovl %esp, %ebp       ## move %esp into %ebp
+mrmovl 8(%ebp), %edx    ## moves first argument into %eax
+pushl %edx              ## pushes %edx into stack
+call f                  ## call f for the first argument
+rrmovl %eax, %edx       ## takes the return value of function f and moves it into %edx
+mrmovl 12(%ebp), %ecx   ## moves second argument into %ecx
+pushl %ecx              ## pushes %ecx into stack
+call f                  ## call f for the second argument
+addl %edx, %eax         ## adds the return value of the second value to the first
+popl %ebp               ## removes %ebp out of stack
+ret                     ## return %eax
+
+
+Main:
+pushl %ebp              ## push %ebp into stack
+rrmovl %esp, %ebp       ## moves %esp into %ebp
+irmovl $3, %ecx         ## moves the value 3 into %ecx
+pushl %ecx              ## pushes %ecx into the stack
+irmovl $4, %edx         ## moves the value 4 into %edx
+pushl %edx              ## push #edx into the stack
+call g                  ## call function g using the 2 variables pushed inth the stack
+
+
+popl %ebp               ## removes %ebp out of stack
+ret                     ## return
+
+.pos 0x100
+Stack:
+
+
+-------------------------------------------------------------------------------
+##3
+
+Fetch code:
+ifun <- M1 [PC]             #reads the instruction
+RA: rB <- M1 [PC + 1]       #reads the register
+ValC <- M4 [PC + 2]         #reads the constant value
+ValP <- PC + 6              #determine next pc
+
+
+Decode:
+valB <- R [rB]              #read operand from B
+
+Execute:
+valE <- valC + valB         #Do alu operation
+
+Memory:
+
+Write back:
+R [rB] <- valE              #store result
+
+
+Update:
+PC PC <- valP               #update calue of PC
+
+
+
+
+
+
+

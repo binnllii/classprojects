@@ -1,0 +1,107 @@
+init:
+irmovl Stack, %esp  	# Set up stack pointer
+irmovl Stack, %ebp  	# Set up base pointer
+call Main       		# Execute main program
+halt		        	# Terminate program
+
+.pos 0x100
+# Array of 4 elements
+.align 4
+array:
+.long 0x0002
+.long 0x0001
+.long 0x0004
+.long 0x0009
+.long 0x0008
+.long 0x0007
+.long 0x0010
+.long 0x0005
+.long 0x0006
+.long 0x0003
+
+Main:
+pushl %ebp
+rrmovl %esp, %ebp
+irmovl $10, %eax
+pushl %eax	            	# Push 10
+irmovl array, %edx
+pushl %edx               	# Push array
+call sSort	            	# loop(array, 10)
+rrmovl %ebp, %esp
+popl %ebp
+ret
+
+sSort:
+pushl %ebp
+rrmovl %esp,%ebp
+mrmovl 8(%ebp),%ecx     	# ecx = Start
+mrmovl 12(%ebp),%edx    	# edx = Count
+pushl %edx
+andl %edx, %edx
+je End
+
+loop:
+mrmovl (%ecx), %esi 	    # get *Start
+rrmovl %ecx, %edi
+andl %edx, %edx
+jne loop2                   #Jump to loop2 if non-zero
+irmovl $4, %ebx             #
+addl %ebx, %ecx             # Start++
+popl %edx
+irmovl $-1, %ebx	        #
+addl %ebx,%edx              # Count--
+pushl %edx
+jne loop                    # Stop when 0
+je End
+
+loop2:
+irmovl $4, %ebx             # 4 into ebx
+addl %ebx, %edi             # edi = ebx + edi
+mrmovl (%edi), %ebx
+pushl %ecx                  #push ecx into stack
+pushl %edi                  #push edi into stack
+pushl %esi                  #push esi into stack
+subl %ebx, %esi             #if ebx is less than esi
+popl %esi
+jle LessThan                #jumps past swap when non-negative
+call swap
+mrmovl (%ebx), %esi
+
+LessThan:
+popl %edi
+popl %ecx
+irmovl $-1, %ebx
+addl %ebx, %edx             #decrements 1 to edx until i hits 0
+je loop                     #go to loop if = 0
+jne loop2                   #go to loop2 to if not 0
+
+swap:                       #swaps the numbers
+pushl %ebp
+rrmovl %esp, %ebp
+
+mrmovl 8(%ebp),%eax
+mrmovl 12(%ebp), %ebx
+
+pushl %ecx
+pushl %edi
+
+mrmovl (%ebx), %ecx
+mrmovl (%eax), %edi
+
+rmmovl %edi, (%ebx)
+rmmovl %ecx, (%eax)
+
+brk
+popl %edi
+popl %ecx
+popl %ebp
+ret
+
+End:
+rrmovl %ebp,%esp
+popl %ebp
+ret
+
+# The stack starts here and grows to lower addresses
+.pos 0x100
+Stack:

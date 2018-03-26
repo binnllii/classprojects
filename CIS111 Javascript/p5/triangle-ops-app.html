@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Triangle Operators</title>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <!-- fix Chrome v47 ajax security error for "open in browser" -->
+    <script>
+    $(document).bind('mobileinit', function() {
+        $.mobile.pushStateEnabled = false;
+    });
+    </script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <div data-role="page">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="triangle-ops-info.html">Information</a></li>
+                <li><a href="triangle-ops-app.html" class="ui-btn-active ui-state-persist">
+          App</a></li>
+            </ul>
+        </div>
+        <div data-role="content">
+            <label for="a">Side 1:</label>
+            <input type='range' name='a' id='a' min='1' max='20' placeholder='0'>
+            <label for="b">Side 2:</label>
+            <input type='range' name='b' id='b' min='1' max='20' placeholder='0'>
+            <label for="c">Side 3:</label>
+            <input type='range' name='c' id='c' min='1' max='20' placeholder='0'>
+            <br>
+            <button>Legal Triangle?</button>
+            <button>Area?</button>
+            <button>Triangle Type?</button>
+            <button>3:4:5 Triangle?</button>
+            <br>
+            <table id="data">
+                <tr>
+                    <td>Function Result:</td>
+                    <td id='tvalDisplay'></td>
+                </tr>
+            </table>
+        </div>
+        <div data-role="footer">
+            <small>
+        Triangle operators mobile app demo
+      </small>
+        </div>
+    </div>
+    <script type='text/javascript' src='triangle-ops-app.js'></script>
+</body>
+
+</html>

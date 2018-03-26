@@ -1,0 +1,10 @@
+Hamberger 3.33
+Cheeseburger 3.50
+French_Fries 8.00
+Mc_nuggets 3.55
+McRib 8.00
+Big_mac 4.44
+Quarter_pounder 3.33
+Caesar_salad 4.44
+Happy_meal 3.44
+Fish_filet 5.00

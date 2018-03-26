@@ -1,0 +1,116 @@
+--  1
+SELECT c.fname, c.lname, c.city, s.sname
+FROM stores7.customer c 
+        JOIN stores7.state s ON s.code = c.state
+WHERE c.state LIKE 'MA' OR c.state LIKE 'AZ' OR c.state LIKE 'CO' 
+ORDER BY FIELD(s.sname, 'Massachusetts', 'Arizona', 'Colorado') ASC, lname;
+
+-- 2
+SELECT c.customer_num, c.fname, c.lname, c.city, c.state, CONCAT('$', IFNULL(SUM(s.total_price),0)) AS totHero
+FROM stores7.customer c LEFT JOIN 
+						(SELECT c.customer_num, total_price  
+                     FROM customer c
+                     JOIN orders o USING(customer_num)
+						JOIN items i USING(order_num)
+						JOIN stock s USING(stock_num, manu_code)
+						JOIN manufact m USING(manu_code)
+						WHERE manu_name = 'smith') s USING(customer_num)
+GROUP BY lname;
+
+
+-- 3
+SELECT c.fname, c.lname, s.total_price + SUM(o.ship_charge) AS totalSpent
+FROM stores7.customer c JOIN 
+						(SELECT c.customer_num, SUM(i.total_price) as total_price
+                     FROM customer c
+                     JOIN orders o USING(customer_num)
+						JOIN items i USING(order_num)
+						JOIN stock s USING(stock_num, manu_code)
+						JOIN manufact m USING(manu_code)
+                        GROUP BY customer_num) s USING(customer_num)
+                        
+			JOIN orders o USING(customer_num)
+ 					
+                        
+GROUP BY customer_num 
+ORDER BY lname;                 
+
+-- 4
+SELECT stock_num, manu_code
+FROM stores7.stock s
+WHERE (s.stock_num, s.manu_code) NOT IN
+
+		(SELECT s.stock_num, s.manu_code
+		FROM items i JOIN stock s USING(stock_num, manu_code)
+		GROUP BY 1, 2) 
+
+
+-- 5
+SELECT o.order_num, o.customer_num, o.ship_weight
+
+		FROM stores7.orders as o
+		JOIN (SELECT AVG(od.ship_weight) + a.max_weight as ship_weight
+        
+		FROM stores7.orders  od 
+        JOIN (SELECT MAX(abs(x.ship_weight - y.ship_weight)) as max_weight
+        
+		FROM stores7.orders x
+		JOIN (SELECT AVG(o2.ship_weight) as ship_weight
+        
+        FROM stores7.orders o2) as y) as a)  as f
+		WHERE  f.ship_weight = o.ship_weight;
+
+
+--  7        
+SELECT d.dname, p.pname, p.plocation
+FROM company.department d
+		JOIN project p ON dnum = dnumber
+        JOIN dept_locations dl 
+				
+        WHERE p.plocation NOT IN 
+        
+					(SELECT  d.dlocation
+                    FROM company.dept_locations d);
+        
+-- 8
+SELECT p.pname, MIN(w.thour) as totHours
+FROM company.project p
+		JOIN 
+        (SELECT SUM(w.hours) AS thour, w.pno
+        FROM works_on w 
+        GROUP BY pno) w ON w.pno = p.pnumber
+        
+        
+		GROUP BY w.pno
+        ORDER BY totHours 
+        LIMIT 1;
+		
+        
+ 
+
+-- 9.
+SELECT CONCAT(e.fname, " ", e.lname), p.pname, w.hours
+		FROM company.employee e 
+        LEFT JOIN works_on w ON w.essn = e.ssn
+        JOIN project p ON w.pno = p.pnumber
+        WHERE pno = 2 OR pno = 3 OR pno = 20;
+        
+
+
+
+-- 10
+SELECT f.title, CONCAT('$', IFNULL(SUM(p.amount),0)) as amtspent
+		FROM sakila.film f
+        LEFT JOIN inventory i USING(film_id)
+        LEFT JOIN rental r USING(inventory_id)
+        LEFT JOIN payment p USING(rental_id)
+        
+GROUP BY film_id    
+ORDER BY title;
+        
+
+
+			
+			
+
+

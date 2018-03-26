@@ -1,0 +1,11 @@
+n Li
+logger analysis:
+
+When i analyzed the executing times of blender
+and color between the images, the time grows
+proportional to the number of pixels, because
+the pixels of a 500 by 500 are 4 times greater
+than 250 by 250 (ex. 250*250 = 62500, 500*500 = 250000),
+the time will also be about 4 times greater.
+Same goes with the execution time for color.
+~                                                

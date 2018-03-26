@@ -1,0 +1,51 @@
+ # state, capital, km**2, pop in millions
+ Alabama,Montgomery,135765,4.8
+ Alaska,Juneau,1717854,0.7
+ Arizona,Phoenix,295254,6.6
+ Arkansas,Little Rock,137732,1.0
+ California,Sacramento,423970,38.3
+ Colorado,Denver,269601,5.2
+ Connecticut,Hartford,14357,3.6
+ Delaware,Dover,6447,0.9
+ Florida,Tallahassee,170304,19.6
+ Georgia,Atlanta,153909,10.0
+ Hawaii,Honolulu,28311,1.4
+ Idaho,Boise,216448,1.6
+ Illinois,Springfield,149998,12.8
+ Indiana,Indianapolis,94321,6.6
+ Iowa,Des Moines,145743,3.1
+ Kansas,Topeka,213098,2.9
+ Kentucky,Frankfort,104659,4.4
+ Louisiana,Baton Rouge,134264,4.6
+ Maine,Augusta,91646,1.3
+ Maryland,Annapolis,32133,5.9
+ Massachusetts,Boston,27336,6.7
+ Michigan,Lansing,250494,9.9
+ Minnesota,St. Paul,225171,5.4
+ Mississippi,Jackson,125434,3.0
+ Missouri,Jefferson City,180533,6.0
+ Montana,Helena,380858,1.0
+ Nebraska,Lincoln,200356,1.9
+ Nevada,Carson City,286351,2.8
+ New Hampshire,Concord,24216,1.3
+ New Jersey,Trenton,22588,8.9
+ New Mexico,Santa Fe,314915,2.0
+ New York,Albany,141299,19.7
+ North Carolina,Raleigh,139389,9.9
+ North Dakota,Bismarck,183108,0.7
+ Ohio,Columbus,116096,11.6
+ Oklahoma,Oklahoma City,181035,3.9
+ Oregon,Salem,254805,3.9
+ Pennsylvania,Harrisburg,119283,12.8
+ Rhode Island,Providence,4002,1.1
+ South Carolina,Columbia,82932,4.8
+ South Dakota,Pierre,199729,0.8
+ Tennessee,Nashville,109151,6.5
+ Texas,Austin,695621,26.4
+ Utah,Salt Lake City,219887,2.9
+ Vermont,Montpelier,24901,0.6
+ Virginia,Richmond,110785,8.3
+ Washington,Olympia,184661,7.0
+ West Virginia,Charleston,62755,1.9
+ Wisconsin,Madison,169639,5.7
+ Wyoming,Cheyenne,253336,0.6

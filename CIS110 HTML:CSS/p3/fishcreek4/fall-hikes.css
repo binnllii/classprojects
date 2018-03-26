@@ -1,0 +1,14 @@
+#fall { color: #ffcccc;
+     color: hsla(60, 100%, 90%, 0.8);
+     font-family: Georgia, "Times New Roman", serif;
+     font-size: 6em;
+     padding: 20px; 
+     background-color: #FFFFFF;
+        opacity: 0.5 }
+
+body { background-image: url(fall-foliage.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color:#464646; }

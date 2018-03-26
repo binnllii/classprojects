@@ -1,0 +1,10 @@
+jackson 10.5 22
+amber 18 25
+groves 44 30
+wright 10 15
+johnson 15 10
+lee 45 30
+lambert 40 18.5
+knight 40 50
+stern 40 70
+mcjacob 35 30

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Number Theory Operators</title>
+
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+
+  <link rel="stylesheet" href="css/triangle-ops.css" />
+
+  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<script>
+  $(document).bind('mobileinit', function() {
+    $.mobile.pushStateEnabled = false;
+  });
+  </script>
+
+  <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+  <div id="page" data-role="page">
+    <div data-role="navbar">
+      <ul>
+        <li><a href="ntheory-ops-info.html" class="ui-btn-active ui-state-persist">Information</a></li>
+        <li><a href="ntheory-ops-app.html">App</a></li>
+      </ul>
+    </div>
+<div data-role="content">
+    <h2 style="text-align: center;"> Number Theory Operators </h2>
+
+    <h2>Deficient</h2>
+      <p>A deficient number is a number n for which the sum of divisors σ(n) less than 2n, or, equivalently, the sum of proper divisors (or aliquot sum) s(n) less than n.</p>
+    <h2>Perfect</h2>
+      <p>A positive integer that is equal to the sum of its proper divisors.</p>
+    <h2>Abundent</h2>
+      <p>An abundent number is a number for which the sum of its proper divisors is greater than the number itself.</p>
+    <h2>Prime</h2>
+      <p>This button will display whether the number is prime or not. A prime number is divisiable by itself and 1.</p>
+ 
+  </div>
+</body>
+</html>

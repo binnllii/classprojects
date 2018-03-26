@@ -1,0 +1,57 @@
+Solutions document
+
+1   A.  x is held by %esi
+        y is held by %ebx
+        result is held  by %edi
+        mask is held by %edx
+
+    B. result is -1, mask is 1
+
+    C. mask is not 0
+
+    D. %edx holds the value for mask, mask getd updated every time when %edx is shifted to the left by n bits, and testl tests the mask.
+
+    E. Bitwise AND is used to compare mask and x and the result is XORed with result.
+
+
+    F.
+
+int loop(int x, int n){
+    int result = -1;
+    int mask;
+    for(mask = 1; mask != 0; mask = mask << n){
+        result ^= mask & x;
+    }
+    return result;
+}
+
+2.  A. M is 13 and is the size of the array.
+
+    B. The value of i is stored in the %edi register, and the value of j is stored in the %ecx register.
+
+    C. in file
+
+
+4.
+
+f:
+    pushl %ebp
+    movl %esp, %ebp
+    movl %eax, %ebx
+    leal (%ebx, %ebx, 2), %eax
+    movl %eax, %ebx
+    pop1 %ebp
+    ret
+g:
+    pushl %ebp
+    movl 8(%ebp), %eax
+    call f
+    movl %eax, %edx
+    movl 12(%ebp), %eax
+    call f
+    movl %eax, %edx
+    add %ecx, %edx
+    movl %edx, eax
+    pop %ebx
+    ret
+

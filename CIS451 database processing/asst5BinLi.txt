@@ -1,0 +1,181 @@
+-- 1
+
+SELECT c.fname, c.lname, c.company 
+FROM stores7.customer c
+WHERE c.company LIKE '%Sport' OR c.company LIKE  '%Sports';
+
+
+-- 2
+SELECT Concat(c.fname, ' ', c.lname) AS customer_name, c.city, c.state, s.description
+FROM stores7.customer c 
+        JOIN orders o USING(customer_num)
+        JOIN items i USING(order_num)
+        JOIN stock s USING(stock_num, manu_code)
+        JOIN manufact m USING(manu_code)
+		WHERE manu_name = 'smith';
+
+
+
+-- 3
+SELECT s.sname, Concat(c.fname, ' ', c.lname) AS customer_name
+FROM stores7.state s LEFT JOIN stores7.customer c ON c.state = s.code;
+
+
+
+
+-- 4
+SELECT e.fname, e.lname, w.hours, p.pname
+
+FROM company.employee e JOIN company.works_on w ON e.ssn = w.essn
+		JOIN company.project p ON p.pnumber = w.pno
+        WHERE p.pname =  'ProductY' AND w.hours > 8;
+         
+
+
+
+-- 5
+SELECT d.dname, e.fname AS dependent_name 
+FROM company.department d JOIN company.employee e ON d.dnumber = e.dno
+
+
+-- 6
+SELECT Concat(e.fname, ' ', e.lname) AS supervisor, Concat(m.fname, ' ', m.lname) AS supervisee
+		FROM company.employee e 
+		JOIN company.employee m ON e.ssn = m.superssn;
+
+-- 7
+SELECT Concat(c.first_name, ' ', c.last_name) AS full_name, f.title AS movie
+		FROM sakila.customer c
+        JOIN rental r USING(customer_id)
+        JOIN inventory i USING(inventory_id)
+        JOIN film f USING(film_id)
+        WHERE MONTHNAME(r.rental_date) = 'June';
+        
+        
+        
+
+	
+-- 8
+SELECT Concat(e.first_name, ' ', e.last_name) AS full_name, e.email 
+		FROM sakila.customer e 
+		JOIN payment p USING(customer_id)
+		JOIN rental r USING(rental_id)
+        JOIN inventory i USING(inventory_id)
+        JOIN film_category f USING(film_id)
+        JOIN category c USING(category_id)
+        WHERE p.amount > 2 AND c.name = 'family';
+    
+
+
+-- 9
+SELECT COUNT(f.title) as 'COUNT(rental_id)'
+		FROM sakila.rental r
+        JOIN inventory i USING(inventory_id)
+        JOIN film f USING(film_id)
+        WHERE f.title LIKE '%TEEN%'
+        
+1.
+
+fun sumAll(nil) = 0 | sumAll(x :: xs) = x + sumAll(xs);
+
+2.
+
+fun interp(PLUS(a,b)) = interp(a) + interp(b) | interp(TIMES(a,b)) = interp(a) * interp(b) | interp(NUM a) = a;  
+
+3.
+
+fun treemap F L =
+	case L of
+	CONS(x,y) => CONS(treemap F x, treemap F y)
+	| LEAF x => LEAF (F x)
+	| NIL => NIL;
+
+4.
+
+a.fun a = fn : int * int -> int 
+it take 2 integers to return an int
+
+b.fun b = fn : real * real -> real
+it takes 2 real numbers to return a real result
+
+c.fun c = fn : ('a -> 'b) -> 'a -> 'b
+a list returns a list, which is also used with a list
+
+d.fun d = fn : (‘a -> ‘a) * ‘a -> ‘a
+takes a list and returns a list and multiples it with another list that returns a list
+
+e.fun e = fn : 'a * 'a * ('a -> bool) -> 'a
+multiplies a list with a list multiplies with a list pointed to a bool, and returns a list.
+
+
+5.1
+
+proc P (price Q) 
+		begin Q(true) end;
+			
+
+P(Q);
+
+
+Q(x)
+	begin x+1;
+
+this is correct but at runtime x is a bool and 1 is an int therefore creates a runtime error.
+
+5.5
+datatype tree = NODE of (tree * tree) | LEAF of int;
+fun reduce F L =
+	case L of
+	NODE(x,y) => f(reduce F x, reduce F y)
+	| LEAF x => x;
+
+5.7
+
+a. you can get a bug because x.i may not contain a value, therefore can cause a runtime error.
+b. You can get a bug because your m might not be of type int, therefore there may be a runtime error.
+
+5.8
+A.	
+
+fun merge (nil, ys) = ys
+|   merge (xs, nil) = xs
+|   merge (x :: xs, y :: ys) =
+      if (x > y) then x :: merge(xs, y :: ys)
+      else y :: merge(x :: xs, ys);
+
+B.
+fun compose f g
+	case of f
+		compose(f,g) => compose(f(g)); 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

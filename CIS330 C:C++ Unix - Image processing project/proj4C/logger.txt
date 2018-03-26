@@ -1,0 +1,80 @@
+Blender: about to update input1
+
+Color: about execute
+
+Color: done executing, took 0.001546
+
+Blender: done updating input1
+
+Blender: about to update input2
+
+Color: about execute
+
+Color: done executing, took 0.001393
+
+Blender: done updating input2
+
+Blender: about execute
+
+Blender: done executing, took 0.003250
+
+Blender: about to update input1
+
+Color: about execute
+
+Color: done executing, took 0.005366
+
+Blender: done updating input1
+
+Blender: about to update input2
+
+Color: about execute
+
+Color: done executing, took 0.005815
+
+Blender: done updating input2
+
+Blender: about execute
+
+Blender: done executing, took 0.014775
+
+Blender: about to update input1
+
+Color: about execute
+
+Color: done executing, took 0.021338
+
+Blender: done updating input1
+
+Blender: about to update input2
+
+Color: about execute
+
+Color: done executing, took 0.023336
+
+Blender: done updating input2
+
+Blender: about execute
+
+Blender: done executing, took 0.054343
+
+Blender: about to update input1
+
+Color: about execute
+
+Color: done executing, took 0.100857
+
+Blender: done updating input1
+
+Blender: about to update input2
+
+Color: about execute
+
+Color: done executing, took 0.089971
+
+Blender: done updating input2
+
+Blender: about execute
+
+Blender: done executing, took 0.200591
+

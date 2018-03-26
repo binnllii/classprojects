@@ -1,0 +1,10 @@
+Lee 30 40.00
+Jackson 20 15.25
+Andrews 25 25.30
+Johnson 45 10.50
+John 25 30.00
+Samuals 30 30.25
+Amber 20 70.50
+James 30 40.10
+Pinoy 25 12.50
+Orlando 50 10.55
